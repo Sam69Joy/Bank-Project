@@ -1,4 +1,7 @@
 #include<iostream>
+#include<bits/stdc++.h>
+#include<windows.h>
+#include<stdio.h>
 #include<stdlib.h>
 #include<fstream>
 #include<cctype>
@@ -22,12 +25,14 @@ public:
 	void Updation();
 	char rettype() const;
 	void draw(int);
+	void invalid(int a);
 };
 
 
 void Bank_Account::Updation()
 {
 	cout<<"\n\tBank_Account No. : "<<acno;
+	invalid(acno);
 	cout<<"\n\tUpdation Bank_Account Holder Name : ";
 	cin.ignore();
 	cin.getline(name,50);
@@ -36,12 +41,32 @@ void Bank_Account::Updation()
 	type=toupper(type);
 	cout<<"\n\tUpdation Balance Total-Money : ";
 	cin>>Money_Deposit;
+	invalid(Money_Deposit);
+}
+void Bank_Account::invalid(int a)
+{
+    while(true)
+    {
+        if(a)
+        {
+            break;
+        }
+        else
+        {
+            cout<<"\t\t\t\tInvalid!!!!!\n\tEnter proper input:";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cin>>a;
+        }
+
+    }
 }
 void Bank_Account::create_Bank_Account()
 {
 	system("CLS");
 	cout<<"\n\tPlease Enter the Bank_Account No. : ";
 	cin>>acno;
+	invalid(acno);
 	cout<<"\n\n\tPlease Enter the Name of the Bank_Account holder : ";
 	cin.ignore();
 	cin.getline(name,50);
@@ -50,7 +75,8 @@ void Bank_Account::create_Bank_Account()
 	type=toupper(type);
 	cout<<"\n\tPlease Enter The Starting Total-Money : ";
 	cin>>Money_Deposit;
-	cout<<"\n\n\tBank_Account Created..";
+	invalid(Money_Deposit);
+	cout<<"\n\n\tBank_Account Created..\n\n\tPress any key to continue...";
 }
 
 void Bank_Account::Display_Account() const
@@ -97,8 +123,30 @@ void display_all();
 void delete_Bank_Account(int);
 void Money_Deposit_withdraw(int, int);
 void Updation_Bank_Account(int);
+//main
 int main()
 {
+
+
+    //*************************************loading*****************
+    system("color B0");
+    system("cls");
+
+
+    int bar1=177,bar2=219;
+    cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\tLoading...";
+    cout<<"\n\n\n\t\t\t\t\t\t";
+    for(int i=0;i<25;i++)
+        cout<<":";
+    cout<<"\r";
+    cout<<"\t\t\t\t\t\t";
+    for(int i=0;i<25;i++)
+    {
+        cout<<(char)bar2;
+        Sleep(150);
+    }
+    cout<<"\n\t\t\t\t"<<(char)1<<"!";
+//***********************************************************************
     system("Color B0");
 	char ch;
 	int num;
